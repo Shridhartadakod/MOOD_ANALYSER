@@ -14,6 +14,8 @@ namespace MOOD_ANALYSER
         {
             NULL_MOOD,
             EMPTY_MOOD,
+            NO_SUCH_CLASS,
+            NO_SUCH_METHOD
         }
 
         public MoodAnalysisException(ExceptionType type, string errorMessage) : base(errorMessage)
