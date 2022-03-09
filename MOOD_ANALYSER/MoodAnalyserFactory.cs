@@ -9,7 +9,7 @@ namespace MOOD_ANALYSER
 {
     public  class MoodAnalyserFactory
     {
-        public static object CreateMoodAnalyserObject(string className, string constructorName)
+        public static object CreateMoodAnalyserObject(string className, string constructorName, string message = "")
         {
             string pattern = @"." + constructorName + "$";
             Match result = Regex.Match(className, pattern);
@@ -18,7 +18,9 @@ namespace MOOD_ANALYSER
                 try
                 {
                     Type moodAnalyseType = Type.GetType(className);
-                    return Activator.CreateInstance(moodAnalyseType);
+                    if (message == "")
+                        return Activator.CreateInstance(moodAnalyseType);
+                    return Activator.CreateInstance(moodAnalyseType, message);
                 }
                 catch (ArgumentNullException)
                 {
